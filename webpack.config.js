@@ -1,15 +1,24 @@
-/**
- * Created by chkui on 2016/11/16.
- */
+var path = require('path');
 module.exports = {
-    entry: './entry.js',//¶¨ÒåÒªÒıÈëµÄjsÎÄ¼ş
+    entry: ['./dev/js/index/comps/main.jsx'],//å®šä¹‰è¦å¼•å…¥çš„jsæ–‡ä»¶
     output: {
         path: __dirname,
-        filename: 'bundle.js' //¶¨ÒåÒªÊä³öµÄjsÎÄ¼ş
+        filename: './dev/js/index/index.js' //å®šä¹‰è¦è¾“å‡ºçš„jsæ–‡ä»¶
     },
     module: {
-        loaders: [//¶¨Òå¼ÓÔØÄÚÈİ
-            {test: /\.css$/, loader: 'style!css'}
-        ]
+        loaders: [{
+            test: /\.js[x]?$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015','react']
+            }
+        }, {
+            test: /\.css$/,
+            loader: 'style!css'
+        }, {
+            test: /\.(png|jpg)$/,
+            loader: 'url?limit=25000' //åªè§£æå°äº25000å­—èŠ‚çš„å›¾ç‰‡
+        }]
     }
-}
+};

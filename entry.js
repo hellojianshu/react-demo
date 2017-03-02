@@ -3,6 +3,6 @@
  */
 require("./style.css");
 document.write('<h1>hello webpack</h1>');
-//新增对module.js的引用
+// module.js 
 document.write(require('./module.js'));
 // document.write('<br />' + document.title);
